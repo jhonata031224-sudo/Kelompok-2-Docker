@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 1. Service Web Server Apache + PHP 8.2
+  web:
+    container_name: jasukemazd_container
+    image: php:8.2-apache
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    restart: always
+
+  # 2. Service Database SQL (MySQL 8.0)
+  db:
+    container_name: jasukemazd_db
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Kelompok2_
+      MYSQL_DATABASE: db_jasuke
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db_data:
