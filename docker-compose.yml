@@ -11,6 +11,7 @@ services:
       - .:/var/www/html
     depends_on:
       - db
+    entrypoint: [ "sh", "-c", "docker-php-ext-install mysqli && docker-php-ext-enable mysqli && apache2-foreground" ]
     restart: always
 
   # 2. Service Database SQL (MySQL 8.0)
@@ -20,8 +21,9 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: Kelompok2_
-      MYSQL_DATABASE: db_jasuke
+      # PENTING: Sesuaikan password dan nama DB ini dengan yang tertulis di pesanan.php kalian
+      MYSQL_ROOT_PASSWORD: jasuke123
+      MYSQL_DATABASE: jasuke_db
     volumes:
       - db_data:/var/lib/mysql
     restart: always
