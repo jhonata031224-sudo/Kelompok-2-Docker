@@ -1,0 +1,321 @@
+<!-- Dikerjakan oleh Dinar Jhonata - feature/halaman-utama -->
+main
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+dinar
+  <title>Jasuke Maz D - Home</title>
+
+main
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #ff6f00;
+      --orange-light: #ff9800;
+      --orange-dark: #e65100;
+      --cream: #fff8e1;
+      --cream2: #fff8dc;
+      --white: #ffffff;
+      --text: #333;
+      --shadow: 0 8px 30px rgba(230, 81, 0, 0.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Poppins', sans-serif; width: 100%; overflow-x: hidden; background: var(--cream); }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 50px;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(230,81,0,0.12);
+      border-bottom: 2px solid rgba(255,152,0,0.2);
+    }
+    .navbar-logo {
+      height: 60px; width: auto; object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(255,160,0,0.4));
+      transition: all 0.4s ease;
+    }
+    .navbar-logo:hover { filter: drop-shadow(0 4px 14px rgba(255,111,0,0.65)); transform: translateY(-2px); }
+    .navbar ul { list-style: none; display: flex; gap: 10px; }
+    .navbar ul li a {
+      text-decoration: none; color: #444;
+      font-weight: 600; font-size: 0.95rem;
+      padding: 8px 18px; border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    .navbar ul li a:hover, .navbar ul li a.active {
+      background: var(--orange); color: white;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(230,81,0,0.3) 100%),
+                  url('jasuke web.jpg') no-repeat center center/cover;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 0 20px;
+      padding-top: 85px;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white; padding: 6px 20px;
+      border-radius: 30px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 20px; letter-spacing: 2px;
+      backdrop-filter: blur(6px);
+      animation: fadeDown 0.8s ease;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem; color: white;
+      text-shadow: 2px 4px 20px rgba(0,0,0,0.4);
+      animation: fadeDown 1s ease 0.1s both;
+      line-height: 1.1;
+    }
+    .hero h1 span { color: #ffcc02; }
+    .hero p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.9);
+      max-width: 560px; margin: 20px auto 0;
+      line-height: 1.8;
+      animation: fadeDown 1s ease 0.2s both;
+    }
+    .hero-btns { display: flex; gap: 15px; margin-top: 35px; animation: fadeDown 1s ease 0.3s both; }
+    .btn-primary {
+      padding: 14px 34px; background: var(--orange);
+      color: white; border: none; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(255,111,0,0.5);
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,111,0,0.5); }
+    .btn-outline {
+      padding: 14px 34px; background: transparent;
+      color: white; border: 2px solid white; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover { background: white; color: var(--orange); transform: translateY(-3px); }
+
+    /* STATS */
+    .stats {
+      background: var(--orange);
+      padding: 40px 50px;
+      display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat h3 { font-size: 2.5rem; font-weight: 800; color: white; }
+    .stat p { color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500; }
+
+    /* ABOUT */
+    .about-section {
+      background: white;
+      padding: 100px 50px;
+      display: flex; gap: 60px; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .about-img { flex: 1; }
+    .about-img img { width: 100%; border-radius: 20px; box-shadow: var(--shadow); }
+    .about-text { flex: 1; }
+    .section-label {
+      color: var(--orange); font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: #222; line-height: 1.2; margin-bottom: 20px;
+    }
+    .about-text p { color: #666; line-height: 1.9; margin-bottom: 15px; }
+    .about-text .btn-primary { display: inline-block; margin-top: 10px; }
+
+    /* MENU PREVIEW */
+    .menu-preview { background: var(--cream2); padding: 100px 50px; text-align: center; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; color: #222; margin-bottom: 10px;
+    }
+    .section-title span { color: var(--orange); }
+    .section-sub { color: #888; margin-bottom: 50px; }
+    .menu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px; max-width: 1100px; margin: 0 auto 50px;
+    }
+    .menu-card {
+      background: white; border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      overflow: hidden;
+      transition: all 0.35s ease; cursor: pointer;
+    }
+    .menu-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(255,111,0,0.2); }
+    .menu-card img { width: 100%; height: 220px; object-fit: cover; }
+    .menu-card-body { padding: 20px; }
+    .menu-card-body h3 { font-size: 1.15rem; font-weight: 700; color: #222; }
+    .menu-card-body p { color: #888; font-size: 0.88rem; margin-top: 6px; }
+    .menu-card-body .price { color: var(--orange); font-weight: 700; font-size: 1.1rem; margin-top: 10px; }
+
+    /* ARTIKEL */
+    .artikel-section { background: white; padding: 100px 50px; }
+    .artikel-inner {
+      max-width: 850px; margin: 0 auto; text-align: center;
+      border: 1px solid #ffe0b2; border-radius: 20px;
+      padding: 50px 40px;
+      background: linear-gradient(135deg, #fff8e1 0%, white 100%);
+      box-shadow: 0 4px 24px rgba(255,111,0,0.08);
+    }
+    .artikel-inner h2 { font-family: 'Playfair Display', serif; color: var(--orange-dark); font-size: 2rem; margin-bottom: 25px; }
+    .artikel-inner p { color: #555; line-height: 1.9; margin-bottom: 18px; font-size: 1rem; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a1a;
+      color: white; padding: 50px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 30px;
+    }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--orange-light); }
+    .footer-brand p { color: #aaa; font-size: 0.9rem; margin-top: 8px; max-width: 260px; }
+    .footer-links h4 { color: white; font-weight: 600; margin-bottom: 14px; }
+    .footer-links a { display: block; color: #aaa; text-decoration: none; font-size: 0.9rem; margin-bottom: 8px; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--orange-light); }
+    .footer-bottom { text-align: center; padding: 18px; background: #111; color: #666; font-size: 0.85rem; }
+
+    /* Animations */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 10px 20px; }
+      .hero h1 { font-size: 2.8rem; }
+      .stats { gap: 30px; padding: 30px 20px; }
+      .about-section { flex-direction: column; padding: 60px 20px; }
+      .menu-preview { padding: 60px 20px; }
+      .artikel-section { padding: 60px 20px; }
+      footer { padding: 40px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html">
+      <img src="Jagung.png" alt="Logo Jasuke Maz D" class="navbar-logo">
+    </a>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="pesanan.php">Pesanan</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🌽 UMKM Lokal Cimahi</div>
+    <h1>Jasuke <span>Maz D</span></h1>
+    <p>Nikmati kelezatan Jasuke yang hangat, praktis, dan penuh cinta lokal! Tersedia rasa Milo, Coklat, Keju, dan Kombinasi Lezat!</p>
+    <div class="hero-btns">
+      <a href="pesanan.php" class="btn-primary">🛒 Pesan Sekarang</a>
+      <a href="produk.html" class="btn-outline">Lihat Menu</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><h3>6+</h3><p>Varian Rasa</p></div>
+    <div class="stat"><h3>500+</h3><p>Pelanggan Puas</p></div>
+    <div class="stat"><h3>3</h3><p>Platform Order</p></div>
+    <div class="stat"><h3>100%</h3><p>Bahan Lokal</p></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div style="background: white;">
+    <div class="about-section">
+      <div class="about-img">
+        <img src="jasuke.jpg" alt="Jasuke Maz D">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Tentang Kami</p>
+        <h2>Camilan Lokal, Cita Rasa <span style="color:var(--orange)">Premium</span></h2>
+        <p><strong>Jasuke Maz D</strong> adalah usaha mikro yang dikelola oleh Dinar Jhonata, berlokasi di Kost Pondok Barokah, Cimahi Selatan. Hadir dengan misi menyediakan camilan sehat dari jagung lokal yang lezat dan bergizi.</p>
+        <p>Kami menggunakan bahan baku segar langsung dari petani setempat, mendukung ekonomi lokal sambil memastikan kualitas terbaik di setiap sajian.</p>
+        <a href="produk.html" class="btn-primary">Lihat Semua Produk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU PREVIEW -->
+  <section class="menu-preview">
+    <p class="section-label" style="text-align:center">Menu Pilihan</p>
+    <h2 class="section-title">Varian <span>Jasuke</span> Favorit</h2>
+    <p class="section-sub">Beragam pilihan rasa yang menggugah selera</p>
+    <div class="menu-grid">
+      <div class="menu-card" onclick="location.href='produk.html'">
+        <img src="orig.png" alt="Jasuke Original">
+        <div class="menu-card-body">
+          <h3>Jasuke Original</h3>
+          <p>Jagung manis hangat dengan susu dan keju parut.</p>
+          <div class="price">Rp 10.000</div>
+        </div>
+      </div>
+      <div class="menu-card" onclick="location.href='produk.html'">
+        <img src="cokju.png" alt="Keju Coklat">
+        <div class="menu-card-body">
+          <h3>Keju Coklat</h3>
+          <p>Perpaduan manis dan gurih dari keju dan coklat meses.</p>
+          <div class="price">Rp 12.000</div>
+        </div>
+      </div>
+      <div class="menu-card" onclick="location.href='produk.html'">
+        <img src="cokmil.png" alt="Coklat Milo">
+        <div class="menu-card-body">
+          <h3>Coklat Milo</h3>
+          <p>Jagung manis dengan taburan coklat dan milo yang melimpah.</p>
+          <div class="price">Rp 12.000</div>
+        </div>
+      </div>
+    </div>
+    <a href="produk.html" class="btn-primary">Lihat Semua Menu →</a>
+  </section>
+
+  <!-- ARTIKEL -->
+  <section class="artikel-section">
+    <p class="section-label" style="text-align:center">Artikel</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:40px">Transformasi <span>UMKM</span> Lokal</h2>
+    <div class="artikel-inner">
+      <h2>Inovasi Produk Lokal Jasuke Maz D</h2>
+      <p>Di tengah pesatnya perkembangan sektor UMKM di Indonesia, banyak pelaku usaha yang terus berinovasi. <strong>Jasuke Maz D</strong> mengangkat nilai lokal melalui camilan berbahan dasar jagung manis, susu, dan keju.</p>
+      <p>Berdiri di Cimahi Selatan, Jasuke Maz D menawarkan lebih dari sekadar jajanan tradisional — dengan rasa Milo, Coklat, dan Keju-Coklat, menyasar konsumen dari berbagai kalangan.</p>
+      <p>Jasuke Maz D berkomitmen menggunakan bahan baku lokal segar dari petani setempat, memberdayakan ekonomi lokal sekaligus menjamin kualitas terbaik.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <h3>Jasuke Maz D</h3>
+      <p>Camilan sehat berbahan jagung lokal pilihan. Dibuat dengan cinta dari Cimahi Selatan.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigasi</h4>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="pesanan.php">Pesanan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+    <div class="footer-links">
+      <h4>Hubungi Kami</h4>
+      <a href="https://wa.me/6283898101912">WhatsApp</a>
+      <a href="https://www.instagram.com/jasuke_mazde/">Instagram</a>
+      <a href="https://r.grab.com/g/2-1-6-C7D3EUX2GKBAVN">GrabFood</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">© 2025 Jasuke Maz D · All Rights Reserved</div>
+
+</body>
+</html>

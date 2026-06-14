@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontak - Jasuke Maz D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #ff6f00; --orange-light: #ff9800; --orange-dark: #e65100;
+      --cream: #fff8e1; --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Poppins', sans-serif; background: var(--cream); overflow-x: hidden; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 50px; z-index: 999;
+      box-shadow: 0 4px 20px rgba(230,81,0,0.12);
+      border-bottom: 2px solid rgba(255,152,0,0.2);
+    }
+    .navbar-logo { height: 60px; width: auto; filter: drop-shadow(0 2px 6px rgba(255,160,0,0.4)); transition: all 0.4s; }
+    .navbar-logo:hover { filter: drop-shadow(0 4px 14px rgba(255,111,0,0.65)); transform: translateY(-2px); }
+    .navbar ul { list-style: none; display: flex; gap: 10px; }
+    .navbar ul li a {
+      text-decoration: none; color: #444; font-weight: 600; font-size: 0.95rem;
+      padding: 8px 18px; border-radius: 30px; transition: all 0.3s;
+    }
+    .navbar ul li a:hover, .navbar ul li a.active { background: var(--orange); color: white; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #e65100, #ff9800);
+      padding: 130px 50px 70px; text-align: center; color: white;
+    }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 12px; }
+    .page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+
+    /* CONTACT SECTION */
+    .contact-section { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+
+    /* CONTACT CARDS */
+    .contact-cards { display: flex; flex-direction: column; gap: 20px; }
+    .contact-card {
+      background: white; border-radius: 20px;
+      padding: 28px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      display: flex; gap: 20px; align-items: center;
+      transition: all 0.3s; text-decoration: none;
+      border: 2px solid transparent;
+    }
+    .contact-card:hover { border-color: var(--orange); transform: translateX(6px); box-shadow: 0 8px 30px rgba(255,111,0,0.15); }
+    .contact-icon {
+      width: 60px; height: 60px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .contact-icon.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .contact-icon.wa { background: #25d366; }
+    .contact-icon.grab { background: #00b14f; }
+    .contact-icon.loc { background: #ff5722; }
+    .contact-card-info h3 { font-weight: 700; color: #222; font-size: 1rem; }
+    .contact-card-info p { color: #888; font-size: 0.88rem; margin-top: 4px; }
+    .contact-card-info span { color: var(--orange); font-weight: 600; font-size: 0.88rem; }
+
+    /* CONTACT FORM */
+    .contact-form-box {
+      background: white; border-radius: 24px;
+      padding: 40px; box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+    }
+    .contact-form-box h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #222; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-weight: 600; color: #444; margin-bottom: 7px; font-size: 0.9rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 2px solid #eee; border-radius: 12px;
+      font-family: 'Poppins', sans-serif; font-size: 0.92rem;
+      transition: border-color 0.3s; outline: none; background: #fafafa;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--orange); background: white; }
+    .form-group textarea { height: 130px; resize: vertical; }
+    .btn-submit {
+      width: 100%; padding: 15px;
+      background: var(--orange); color: white; border: none; border-radius: 14px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; transition: all 0.3s; margin-top: 10px;
+    }
+    .btn-submit:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,111,0,0.4); }
+
+    /* ABOUT PROFILE */
+    .about-section { background: white; padding: 80px 50px; }
+    .about-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; gap: 50px; align-items: center;
+    }
+    .profile-img {
+      width: 200px; height: 200px; object-fit: cover;
+      border-radius: 50%; border: 5px solid var(--orange-light);
+      box-shadow: 0 8px 30px rgba(255,111,0,0.25);
+      flex-shrink: 0;
+    }
+    .profile-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #222; margin-bottom: 10px; }
+    .profile-text .role { color: var(--orange); font-weight: 600; font-size: 0.9rem; margin-bottom: 18px; }
+    .profile-text p { color: #666; line-height: 1.9; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a1a; color: white; padding: 50px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;
+    }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--orange-light); }
+    .footer-brand p { color: #aaa; font-size: 0.9rem; margin-top: 8px; max-width: 260px; }
+    .footer-links h4 { color: white; font-weight: 600; margin-bottom: 14px; }
+    .footer-links a { display: block; color: #aaa; text-decoration: none; font-size: 0.9rem; margin-bottom: 8px; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--orange-light); }
+    .footer-bottom { text-align: center; padding: 18px; background: #111; color: #666; font-size: 0.85rem; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 30px; right: 30px;
+      background: #222; color: white; padding: 14px 24px;
+      border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s;
+      z-index: 9999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .about-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 10px 20px; }
+      .page-header { padding: 110px 20px 50px; }
+      .page-header h1 { font-size: 2.2rem; }
+      .contact-section { padding: 50px 20px; }
+      .about-section { padding: 60px 20px; }
+      footer { padding: 40px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html"><img src="Jagung.png" alt="Logo Jasuke Maz D" class="navbar-logo"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="pesanan.html">Pesanan</a></li>
+      <li><a href="kontak.html" class="active">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <h1>📞 Hubungi Kami</h1>
+    <p>Ada pertanyaan? Kami siap membantu kamu kapan saja!</p>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="contact-grid">
+      <!-- CONTACT CARDS -->
+      <div class="contact-cards">
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:#222; margin-bottom:10px;">Temukan Kami Di</h2>
+        <p style="color:#888; margin-bottom:20px;">Hubungi kami melalui berbagai platform</p>
+
+        <a href="https://www.instagram.com/jasuke_mazde/" target="_blank" class="contact-card">
+          <div class="contact-icon ig">📸</div>
+          <div class="contact-card-info">
+            <h3>Instagram</h3>
+            <p>@jasuke_mazde</p>
+            <span>Follow & DM untuk order →</span>
+          </div>
+        </a>
+
+        <a href="https://wa.me/6283898101912" target="_blank" class="contact-card">
+          <div class="contact-icon wa">💬</div>
+          <div class="contact-card-info">
+            <h3>WhatsApp</h3>
+            <p>+62 838-9810-1912</p>
+            <span>Chat langsung sekarang →</span>
+          </div>
+        </a>
+
+        <a href="https://r.grab.com/g/2-1-6-C7D3EUX2GKBAVN" target="_blank" class="contact-card">
+          <div class="contact-icon grab">🛵</div>
+          <div class="contact-card-info">
+            <h3>GrabFood</h3>
+            <p>Jasuke Maz D</p>
+            <span>Order dan diantar ke rumah →</span>
+          </div>
+        </a>
+
+        <div class="contact-card" style="cursor:default;">
+          <div class="contact-icon loc">📍</div>
+          <div class="contact-card-info">
+            <h3>Lokasi</h3>
+            <p>Kost Pondok Barokah, Cimahi Selatan</p>
+            <span>Jawa Barat, Indonesia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form-box">
+        <h2>✉️ Kirim Pesan</h2>
+        <div class="form-group">
+          <label>Nama Kamu</label>
+          <input type="text" id="cNama" placeholder="Masukkan nama kamu">
+        </div>
+        <div class="form-group">
+          <label>Email / WhatsApp</label>
+          <input type="text" id="cKontak" placeholder="email@contoh.com atau 08xxx">
+        </div>
+        <div class="form-group">
+          <label>Subjek</label>
+          <input type="text" id="cSubjek" placeholder="Pertanyaan, saran, atau kritik">
+        </div>
+        <div class="form-group">
+          <label>Pesan</label>
+          <textarea id="cPesan" placeholder="Tulis pesanmu di sini..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="sendMessage()">📨 Kirim via WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT OWNER -->
+  <section class="about-section">
+    <div class="about-inner">
+      <img src="profil.jpg" alt="Dinar Jhonata" class="profile-img">
+      <div class="profile-text">
+        <h2>Dinar Jhonata</h2>
+        <p class="role">🌽 Founder & Owner Jasuke Maz D</p>
+        <p>Seorang wirausahawan muda yang bersemangat dari Cimahi Selatan. Mendirikan Jasuke Maz D dengan misi membawa cita rasa lokal yang lezat ke lebih banyak orang, sekaligus memberdayakan petani jagung lokal. Berkomitmen untuk terus berinovasi dan menghadirkan produk terbaik dengan bahan-bahan segar dan berkualitas.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <h3>Jasuke Maz D</h3>
+      <p>Camilan sehat berbahan jagung lokal pilihan dari Cimahi Selatan.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigasi</h4>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="pesanan.html">Pesanan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+    <div class="footer-links">
+      <h4>Sosial Media</h4>
+      <a href="https://wa.me/6283898101912">WhatsApp</a>
+      <a href="https://www.instagram.com/jasuke_mazde/">Instagram</a>
+      <a href="https://r.grab.com/g/2-1-6-C7D3EUX2GKBAVN">GrabFood</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">© 2025 Jasuke Maz D · All Rights Reserved</div>
+
+  <div class="toast" id="toast">✅ Membuka WhatsApp...</div>
+
+  <script>
+    function sendMessage() {
+      const nama = document.getElementById('cNama').value.trim();
+      const kontak = document.getElementById('cKontak').value.trim();
+      const subjek = document.getElementById('cSubjek').value.trim();
+      const pesan = document.getElementById('cPesan').value.trim();
+
+      if (!nama || !pesan) {
+        alert('Harap isi nama dan pesan terlebih dahulu!');
+        return;
+      }
+
+      let msg = `📩 *PESAN DARI WEBSITE*\n\n`;
+      msg += `👤 Nama: ${nama}\n`;
+      if (kontak) msg += `📱 Kontak: ${kontak}\n`;
+      if (subjek) msg += `📌 Subjek: ${subjek}\n`;
+      msg += `\n💬 Pesan:\n${pesan}`;
+
+      const waUrl = `https://wa.me/6283898101912?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>

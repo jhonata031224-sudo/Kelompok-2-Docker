@@ -1,0 +1,25 @@
+name: Deploy ke VPS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Inject Commit Hash
+        run: |
+          sed -i "s/{{GIT_COMMIT_HASH}}/${{ github.sha }}/g" index.html
+
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: 103.143.12.147
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "."
+          target: "/var/www/html"
+          rm: false
