@@ -21,5 +21,5 @@ jobs:
           username: root
           password: ${{ secrets.SSH_PASSWORD }} # <--- GANTI 'key' MENJADI 'password'
           source: "."
-          target: "/var/www/html"            # <--- GANTI TARGET KE FOLDER JASUKE
+          target: "/app/jasukemazd"            # <--- GANTI TARGET KE FOLDER JASUKE
           rm: false
