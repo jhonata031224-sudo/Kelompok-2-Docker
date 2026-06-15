@@ -1,5 +1,5 @@
 <?php
-$host = 'jasuke_db';
+$host = 'jasukemazd_db';
 $db   = 'jasuke_db';
 $user = 'root';
 $pass = 'jasuke123';
