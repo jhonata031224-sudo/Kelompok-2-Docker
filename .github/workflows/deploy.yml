@@ -19,7 +19,7 @@ jobs:
         with:
           host: 103.143.12.147
           username: root
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }} # <--- GANTI 'key' MENJADI 'password'
           source: "."
-          target: "/var/www/html"
+          target: "/app/jasukemazd"             # <--- GANTI TARGET KE FOLDER JASUKE
           rm: false
