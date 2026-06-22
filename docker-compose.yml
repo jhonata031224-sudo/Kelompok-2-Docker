@@ -6,7 +6,7 @@ services:
     container_name: jasukemazd_container
     image: php:8.2-apache
     ports:
-      - "80:80"
+      - "8081:80"
     volumes:
       - .:/var/www/html
     depends_on:
@@ -19,7 +19,7 @@ services:
     container_name: jasukemazd_db
     image: mysql:8.0
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       # PENTING: Sesuaikan password dan nama DB ini dengan yang tertulis di pesanan.php kalian
       MYSQL_ROOT_PASSWORD: jasuke123
